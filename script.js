@@ -1,154 +1,150 @@
-
-const numeros = [];
-const num_sorteados = [];
-
-for (var i = 0; i <= 50; i++) {
-    numeros.push(i);
-};
-
-
-
-
-function sortear_num (){
-    const numero_sorteado  = Math.floor(Math.random() * numeros.length);
-    const repetido = num_sorteados.find (e => e === numero_sorteado);
-    console.log(repetido);
-   
-
-
-    if (repetido != undefined) {  //se repetido não for undefined é porque veio numero repetido
-        
-        // document.getElementById('numbers').innerHTML = '<h5>Clique novamente</h5>';
-        sortear_num();
-
-    } else {
-
-        document.getElementById('numbers').innerHTML = numero_sorteado;
-
-        num_sorteados.push(numero_sorteado);
-        document.getElementById('sorteados').innerHTML = num_sorteados;
-    }
-             
-
-}
-
-
-function minha_cartela() {
-    const cartela = [];
-    
-    const audio = new Audio('Gravação (13).m4a');
-    audio.play();
-    
-    for (let i = 0; i < 5; i++) {
-
-        
-        cartela[i] = Math.floor(Math.random() * numeros.length);                            
-        
-    }
-
-    if ([...new Set(cartela)].length < 5 ){  // se o array sem repetições tiver menos de 5 elemento repita a operação
-
-        minha_cartela()
-    
-    } else {
-
-        document.getElementById('cartela').innerHTML = [...new Set(cartela)];
-        console.log(cartela);
-    }
-
-    
-    
-    
-}
-
-    
-       
-
-    
-
-
+let cartela = [];
+let sorteados = [];
 const viagens = [
-     
 
-    { 
-        lugar: '<h2>Ilhas Gregas</h2>',
-        frase: '<h3>Se você gosta de mitologia e de águas cristalinas tá aí um bom lugar!</h3>',
-        img: '<img class="img-viagem" src="https://www.viajali.com.br/wp-content/uploads/2017/12/ilhas-gregas-1-1.jpg"></img>'
-    },
-    
-    { 
-        lugar: '<h2>Morro do Alemão</h2>',
-        frase: '<h3>Se você gosta de correr risco de vida e de balas perdidas este é o lugar!</h3>',
-        img: '<img class="img-viagem" src="https://www.vozdascomunidades.com.br/wp-content/uploads/2016/05/historiadocomplexo.jpg"></img>'
+    {
+        lugar: '<h2>Maldivas</h2>',
+        frase: '<h4>Água cristalina, paz absoluta… até acabar o dinheiro 😌</h4>',
+        img: '<img class="img-viagem" src="https://ilhasmaldivas.com.br/wp-content/uploads/2021/10/ilhas-maldivas-galeria-vakkaru-resort-02.jpg">'
     },
 
-    { 
+    {
+        lugar: '<h2>Faixa de Gaza</h2>',
+        frase: '<h4>Boa sorte… o colete à prova de bala é item básico 😬</h4>',
+        img: '<img class="img-viagem" src="https://i0.wp.com/apublica.org/wp-content/uploads/2025/10/Capa_O-que-vem-depois-do-cessar-fogo-na-Faixa-de-Gaza-1.jpg?fit=1400%2C933&ssl=1">'
+    },
+
+    {
         lugar: '<h2>Fernando de Noronha</h2>',
-        frase: '<h3>Aqui é lindo mas até o ar que se respira é pago!</h3>',
-        img: '<img class="img-viagem" src="https://www.viagenscinematograficas.com.br/wp-content/uploads/2013/03/Fernando-de-Noronha-O-que-Fazer.jpg"></img>'
+        frase: '<h4>Lindo, exclusivo… e cada respiração custa caro 🐠</h4>',
+        img: '<img class="img-viagem" src="https://www.rodamundo.tur.br/blog/wp-content/uploads/2019/03/Ba%C3%ADa-dos-Porcos-em-Fernando-de-Noronha-rodamundo-1.jpg">'
     },
 
-
-    { 
-        lugar: '<h2>Alasca</h2>',
-        frase: '<h3>Aqui é muito frio, ou seja você tá Alascado</h3>',
-        img: '<img class="img-viagem" src="https://www.girassolviagens.com/wp-content/uploads/2017/12/girassol_alasca-900x530.jpg"></img>'
-    },
-
-    { 
-        lugar: '<h2>New York</h2>',
-        frase: '<h3>Cuidado com o colesterol porque aqui é a terra do fast food</h3>',
-        img: '<img class="img-viagem" src="https://classic.exame.com/wp-content/uploads/2017/10/ny-1.jpg?quality=70&strip=info&w=1024"></img>'
-    },
-
-    { 
-        lugar: '<h2>Beco de Zé Borges</h2>',
-        frase: '<h3>Corre, senão morre!! Porque aqui é pipoco!</h3>',
-        img: '<img class="img-viagem" src="https://i1.wp.com/www.pbhoje.com.br/wp-content/uploads/2017/10/07fef47b5e20171004071815.jpg?fit=709%2C400&quality=90&strip=all&ssl=1"></img>'
-    },
-
-    { 
-        lugar: '<h2>Guarabira</h2>',
-        frase: '<h3>Dona de um calor quase infernal, essa cidade vai te cozinhar vivo! </h3>',
-        img: '<img class="img-viagem" src="https://brejo.com/wp-content/uploads/2020/05/guarabira-rose-video.jpg"></img>'
-    },
-
-    { 
-        lugar: '<h2>Juazeiro do Norte</h2>',
-        frase: '<h3> Não recomendo levar agasalhos e sim gelo e creme para assaduras</h3>',
-        img: '<img class="img-viagem" src="https://www.badalo.com.br/wp-content/uploads/2019/08/g_20190828235247_15487.jpg"></img>'
-    },
-
-    { 
-        lugar: '<h2>Bayeux</h2>',
-        frase: '<h3>Essa cidade combina com você! kkk Boa sorte!</h3>',
-        img: '<img class="img-viagem" src="https://cdn.oimenu.com.br/public/cidades/bayeux-pb.jpg?05012021"></img>'
-    },
-
-    { 
-        lugar: '<h2>Gramado</h2>',
-        frase: '<h3>Parabéns! Lugar lindo e aconchegante.</h3>',
-        img: '<img class="img-viagem" src="https://parqueterramagicaflorybal.com.br/imagens/pagina/gramado4-1-270649.jpg"></img>'
-    },
-
-    { 
+    {
         lugar: '<h2>Coreia do Norte</h2>',
-        frase: '<h3>Se arrombou! Se não seguir as regras vai ser metralhado hein...</h3>',
-        img: '<img class="img-viagem" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5zZiNIqT6jV6WowiG-ofstHGBc3bSjigW2g&usqp=CAU"></img>'
+        frase: '<h4>Sorria pouco, fale menos ainda… e obedeça sempre 😶</h4>',
+        img: '<img class="img-viagem" src="https://images.adsttc.com/media/images/64f0/d1ad/bbf5/636b/2a7d/ee39/large_jpg/natal-em-pyongyang-uma-cronica-fotografica-sobre-a-capital-da-coreia-do-norte_32.jpg?1693503952">'
     },
 
-    { 
-        lugar: '<h2>Ucrânia</h2>',
-        frase: '<h3>Tomou no papêro! Péssima hora pra visitar esse país</h3>',
-        img: '<img class="img-viagem" src="https://www.cnnbrasil.com.br/wp-content/uploads/sites/12/2022/10/ucrania-bandeira.jpg?w=876&h=484&crop=1"></img>'
+    {
+        lugar: '<h2>Santorini – Grécia</h2>',
+        frase: '<h4>Pôr do sol romântico nível Instagram 📸 E um beijo diferente...</h4>',
+        img: '<img class="img-viagem" src="https://media.staticontent.com/media/pictures/cdc46a03-9eb3-4e5e-8dd2-aa4d5bf30033">'
     },
+
+    {
+        lugar: '<h2>Morro do Alemão</h2>',
+        frase: '<h4>Turismo de adrenalina… corre que é bala 😅</h4>',
+        img: '<img class="img-viagem" src="https://www.vozdascomunidades.com.br/wp-content/uploads/2016/05/historiadocomplexo.jpg">'
+    },
+
+    {
+        lugar: '<h2>Bora Bora</h2>',
+        frase: '<h4>Bangalozinho sobre o mar e zero boletos por alguns dias 🌴</h4>',
+        img: '<img class="img-viagem" src="https://media.staticontent.com/media/pictures/fe332867-b9e4-4db8-a4eb-f3d757d89664">'
+    },
+
+    {
+        lugar: '<h2>Ucrânia</h2>',
+        frase: '<h4>Escolha errada de época… muito errada 💥</h4>',
+        img: '<img class="img-viagem" src="https://imagens.publico.pt/imagens.aspx/2057898?tp=UH&db=&type=&w=320&h=180&act=cropResize">'
+    },
+
+    {
+        lugar: '<h2>Gramado</h2>',
+        frase: '<h4>Chocolate quente, friozinho e paz no coração ☕</h4>',
+        img: '<img class="img-viagem" src="https://media.staticontent.com/media/pictures/9804ef39-84a4-4011-9d10-7566f9c92945">'
+    },
+
+    {
+        lugar: '<h2>Beco de Zé Borges</h2>',
+        frase: '<h4>GPS perde sinal e o juízo também 🏃‍♂️</h4>',
+        img: '<img class="img-viagem" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFc_dOMAKVDFrSu1MVX2uojKgHISPdk9Hs9Q&s">'
+    },
+
+    {
+        lugar: '<h2>Guarabira</h2>',
+        frase: '<h4>Calor nível inferno… mas o povo é gente boa 🔥</h4>',
+        img: '<img class="img-viagem" src="https://brejo.com/wp-content/uploads/2020/05/guarabira-rose-video.jpg">'
+    }
+
 ];
 
-const viagem_sorteada = Math.floor(Math.random() * viagens.length);
 
-function mostrar_viagem(){
-    document.getElementById('res-viagem').innerHTML = viagens[viagem_sorteada].lugar+'<br>'+viagens[viagem_sorteada].img+'<br>'+viagens[viagem_sorteada].frase;
+criarCartela();
+
+function criarCartela() {
+    cartela = [];
+    sorteados = [];
+    document.getElementById("cartela").innerHTML = "";
+    document.getElementById("numeroAtual").innerText = "—";
+    document.getElementById("tabelaContainer").classList.add("d-none");
+    document.getElementById("tabelaBingo").innerHTML = "";
+
+    while (cartela.length < 5) {
+        let n = Math.floor(Math.random() * 75) + 1;
+        if (!cartela.includes(n)) cartela.push(n);
+    }
+
+    cartela.forEach(num => {
+        let label = document.createElement("label");
+        let input = document.createElement("input");
+        let span = document.createElement("span");
+
+        input.type = "checkbox";
+        span.innerText = num;
+
+        label.appendChild(input);
+        label.appendChild(span);
+
+        document.getElementById("cartela").appendChild(label);
+    });
 }
 
-// document.getElementById('giro').addEventListener('click', sortear);
+function recriarCartela() {
+    if (confirm("Tem certeza que deseja recriar sua cartela?")) {
+        criarCartela();
+    }
+}
+
+function sortearNumero() {
+    if (sorteados.length === 75) return;
+
+    let numero;
+    do {
+        numero = Math.floor(Math.random() * 75) + 1;
+    } while (sorteados.includes(numero));
+
+    sorteados.push(numero);
+    document.getElementById("numeroAtual").innerText = numero;
+    document.getElementById("tabelaContainer").classList.remove("d-none");
+
+    atualizarTabela();
+}
+
+function atualizarTabela() {
+    let tabela = document.getElementById("tabelaBingo");
+    tabela.innerHTML = "";
+
+    for (let i = 1; i <= 75; i++) {
+        let div = document.createElement("div");
+        div.innerText = i;
+        if (sorteados.includes(i)) {
+            div.classList.add("ativo");
+        }
+        tabela.appendChild(div);
+    }
+}
+
+function sortearViagem() {
+    const viagem = viagens[Math.floor(Math.random() * viagens.length)];
+
+    document.getElementById("resultadoViagem").innerHTML = `
+        <div class="viagem-card">
+            ${viagem.lugar}
+            <div class="img-container">${viagem.img}</div>            
+            ${viagem.frase}
+        </div>
+    `;
+}
 

@@ -1,50 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mundo Bingo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-    <title>Bingo</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <div class="content">
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="bingo-wrapper">
 
-        <div onload="minha_cartela()" id="globo">
-            
-            <h1>Mundo Bingo</h1>
-            <button id="btn-cartela" onclick="minha_cartela()">Minha cartela</button> <br> <br> <br>
-            <input class="caixinha" type="checkbox">
-            <input class="caixinha" type="checkbox">
-            <input class="caixinha" type="checkbox">
-            <input class="caixinha" type="checkbox">
-            <input class="caixinha" type="checkbox">  
-                      
-            <div id="cartela"></div>            
-            <img id="img-globo" src="https://acegif.com/wp-content/uploads/gifs/globe-7.gif" alt=""> <br>
-            <button id="giro" onclick="sortear_num()" >Sortear número</button> 
+        <h1 class="text-center mb-4"><img class="img-globe" src="https://media.tenor.com/LGoTHwzZzHcAAAAj/planet-earth.gif"></img> Mundo Bingo</h1>
 
-            <div id="numbers"></div>
+        <!-- CARTELA -->
+        <div class="card bingo-card mb-4">
+            <div class="card-body text-center">
+                <h4 class="mb-3">Minha Cartela</h4>
 
-            <div id="sorteados"></div>
+                <div id="cartela" class="cartela"></div>
 
-            <div>
-                <h2>Se você marcou todos os números você tem direito a viajar pra algum lugar! </h2>
-
-                <button id="btn-viagem" onclick="mostrar_viagem()">Sortear viagem</button>
-
-                <div id="res-viagem"></div> <br> <br>
-
-                <h4>O vencedor deverá escolher uma prenda leve para o último colocado!</h4>
+                <button class="btn btn-outline-primary mt-3" onclick="recriarCartela()">
+                    <i class="fas fa-sync-alt"></i> Nova Cartela
+                </button>
             </div>
-
-            
         </div>
-    </div>
 
-    
-    
+        <!-- SORTEIO -->
+        <div class="card bingo-card mb-4">
+            <div class="card-body text-center">
+                <h4 class="mb-3">Número Sorteado</h4>
+
+                <div id="numeroAtual" class="numero-atual mb-3">—</div>
+
+                <button class="btn btn-primary btn-lg" onclick="sortearNumero()">
+                     Sortear Número
+                </button>
+            </div>
+        </div>
+
+        <!-- TABELA DE NÚMEROS -->
+        <div class="card bingo-card mb-4 d-none" id="tabelaContainer">
+            <div class="card-body text-center">
+                <h4 class="mb-3">Números Sorteados</h4>
+
+                <div id="tabelaBingo" class="tabela-bingo"></div>
+            </div>
+        </div>
+
+        <!-- VIAGEM -->
+        <div class="card bingo-card">
+            <div class="card-body text-center">
+                <h4 class="mb-3">🎁 Sorteio de Viagem</h4>
+
+                <button class="btn btn-success btn-lg" onclick="sortearViagem()">
+                    ✈️ Sortear Viagem
+                </button>
+
+                <div id="resultadoViagem" class="resultado-viagem mt-3"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
